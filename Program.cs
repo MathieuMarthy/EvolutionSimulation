@@ -1,6 +1,7 @@
 ﻿using EvolutionSimulation;
 using EvolutionSimulation.Elements;
 using EvolutionSimulation.Elements.Field;
+using EvolutionSimulation.Elements.Forms;
 using Raylib_CsLo;
 
 public static class Program
@@ -12,7 +13,7 @@ public static class Program
 
 
         Field field = new Field();
-        field.GenerateElements();
+        field.GenerateForms();
         field.GenerateCoins();
 
 
@@ -21,14 +22,13 @@ public static class Program
             Raylib.BeginDrawing();
             Raylib.ClearBackground(Raylib.BLACK);
 
-
-
-
             // --- Draw circle ---
             foreach (Element element in field.GetAllElements())
             {
                 Raylib.DrawCircleV(element.Draw(), element.Size, element.Color);
             }
+
+            field.MoveForms();
             // --- End drawing circle ---
 
 

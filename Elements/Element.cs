@@ -23,5 +23,10 @@ namespace EvolutionSimulation.Elements
         {
             return new Vector2(x, y);
         }
+
+        public int GetDistance(int x, int y)
+        {
+            return (int)Vector2.Distance(new Vector2(this.x, this.y), new Vector2(x, y));
+        }
     }
 }

@@ -13,9 +13,31 @@ namespace EvolutionSimulation.Elements.Forms
             Speed = speed;
         }
 
-        public void Move()
+
+        /// <summary>
+        /// Déplace la forme vers la pièce la plus proche
+        /// </summary>
+        /// <param name="destinationX"></param>
+        /// <param name="destinationY"></param>
+        public void Move(int destinationX, int destinationY)
         {
-            x += Speed;
+            if (x < destinationX)
+            {
+                x += Speed;
+            }
+            else if (x > destinationX)
+            {
+                x -= Speed;
+            }
+
+            if (y < destinationY)
+            {
+                y += Speed;
+            }
+            else if (y > destinationY)
+            {
+                y -= Speed;
+            }
         }
     }
 }
