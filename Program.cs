@@ -1,19 +1,19 @@
-﻿using EvolutionSimulation.Elements;
+﻿using EvolutionSimulation;
+using EvolutionSimulation.Elements;
 using EvolutionSimulation.Elements.Field;
-using EvolutionSimulation.Elements.Forms;
 using Raylib_CsLo;
 
 public static class Program
 {
     public static Task Main(string[] args)
     {
-
-        Raylib.InitWindow(1200, 800, "Course des formes");
+        Raylib.InitWindow(Config.WindowWidth, Config.WindowHeight, "Course des formes");
         Raylib.SetTargetFPS(60);
 
 
         Field field = new Field();
         field.GenerateElements();
+        field.GenerateCoins();
 
 
         while (!Raylib.WindowShouldClose())
@@ -21,14 +21,16 @@ public static class Program
             Raylib.BeginDrawing();
             Raylib.ClearBackground(Raylib.BLACK);
 
-            // --- Draw elements ---
-            foreach (Form element in field.Forms)
+
+
+
+            // --- Draw circle ---
+            foreach (Element element in field.GetAllElements())
             {
                 Raylib.DrawCircleV(element.Draw(), element.Size, element.Color);
-
-                element.Move();
             }
-            // --- End drawing elements ---
+            // --- End drawing circle ---
+
 
             Raylib.EndDrawing();
         }
